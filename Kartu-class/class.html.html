@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>class - Audio Kosakata</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    background: #17233D;
+    color: #F6F1E4;
+  }
+  h1 {
+    font-size: 28px;
+    text-transform: capitalize;
+  }
+  #playBtn {
+    display: none;
+    margin-top: 16px;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 999px;
+    border: none;
+    background: #F4A93B;
+    color: #17233D;
+    font-weight: bold;
+  }
+  .wrap { text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>class</h1>
+  <audio id="player" src="class.mp3"></audio>
+  <button id="playBtn" aria-label="Putar audio kosakata class">🔊 Ketuk untuk putar audio</button>
+</div>
+<script>
+  const audio = document.getElementById('player');
+  const btn = document.getElementById('playBtn');
+
+  // Coba putar otomatis begitu halaman dibuka (biasanya berhasil karena
+  // dibuka lewat tap NFC = dianggap aksi langsung dari pengguna oleh browser)
+  audio.play().catch(() => {
+    // Kalau browser memblokir autoplay, tampilkan tombol sebagai cadangan
+    btn.style.display = 'inline-block';
+  });
+
+  btn.addEventListener('click', () => {
+    audio.play();
+    btn.style.display = 'none';
+  });
+</script>
+</body>
+</html>
